@@ -7,6 +7,8 @@ services:
   bark-server:
     image: finab/bark-server:latest
     container_name: bark-server
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     network_mode: bridge
     restart: unless-stopped
     ports:
