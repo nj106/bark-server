@@ -2,9 +2,10 @@
 # - bridge network mode (no dedicated project network)
 # - host port 8084 -> container 8080
 # - volume name pinned to bark_data via `name:` (no compose project prefix)
+# NOTE: Docker Hub org is finab (not finb like the GitHub org).
 services:
   bark-server:
-    image: finb/bark-server
+    image: finab/bark-server:latest
     container_name: bark-server
     network_mode: bridge
     restart: unless-stopped
