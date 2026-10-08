@@ -1,0 +1,21 @@
+# bark-server deployment for Portainer (nj106 fork).
+# - bridge network mode (no dedicated project network)
+# - host port 8084 -> container 8080
+# - volume name pinned to bark_data via `name:` (no compose project prefix)
+services:
+  bark-server:
+    image: finb/bark-server
+    container_name: bark-server
+    network_mode: bridge
+    restart: unless-stopped
+    ports:
+      - "8084:8080"
+    volumes:
+      - bark-data:/data
+    environment:
+      ADDR: ":8080"
+
+volumes:
+  bark-data:
+    driver: local
+    name: bark_data
